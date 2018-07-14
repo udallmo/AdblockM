@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "lol",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "udallandsean",
+  "license": "ISC"
+}
