@@ -1,0 +1,10 @@
+body {
+    min-width: 200px;
+    background-color: #e8e9ea;
+    text-align: center;
+}
+button {
+    height: 20px;
+    width: 20px;
+    outline: none;
+}

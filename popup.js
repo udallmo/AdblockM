@@ -1,15 +1,21 @@
-let changeColor = document.getElementById('changeColor');
+window.onload = function () {
+	function updateLabel() {
+		var enabled = chrome.extension.getBackgroundPage().enabled;
+    document.getElementById('toggle_button').value = enabled ? "Disable" : "Enable";
+	}
+	document.getElementById('toggle_button').onclick = function () {
+		var background = chrome.extension.getBackgroundPage();
+		background.enabled = !background.enabled;
+		updateLabel();
+	};
+	updateLabel();
+}
 
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-
-  changeColor.onclick = function(element) {
-    let color = element.target.value;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.executeScript(
-          tabs[0].id,
-          {code: 'document.body.style.backgroundColor = "' + color + '";'});
-    });
-  };
+var port = chrome.extension.connect({
+  name: "Sample Communication"
 });
+port.postMessage("Hi BackGround");
+port.onMessage.addListener(function(msg) {
+  console.log("message recieved" + msg);
+});
+	
