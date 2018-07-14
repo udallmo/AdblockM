@@ -9,9 +9,9 @@ chrome.webRequest.onBeforeRequest.addListener(
 				content: "Just completed!"
 			}
 		  });
-		alert("blocking:"+ JSON.stringify(details.url));
+		//alert("blocking:"+ JSON.stringify(details.url));
 		//return {cancel: true };
-		return {redirectUrl: 'https://i.redd.it/8opjrihr9w911.jpg'};
+		return {redirectUrl: 'http://localhost:8081'};
 	},
 	{urls: blocked_domains},
 	["blocking"]
